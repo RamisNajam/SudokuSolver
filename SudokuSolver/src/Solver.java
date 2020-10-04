@@ -2,6 +2,11 @@ import java.util.ArrayList;
 
 /**
  * Created by Ramis on 2017-08-17.
+ 
+ This is the only class that needs to be accessed. Transcribe the digits of the Sudoku puzzle row by row
+ (going left to right) without any spaces. This is to be placed in line 23 for the values attribute.
+ Next, run the code, and it will output a formatted, solved version of the grid. An example string is
+ included there.
  */
 public class Solver {
 
