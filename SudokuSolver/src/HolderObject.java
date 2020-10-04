@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-// Abstract class? Make private attributes wherever possible
+// Can be made into an abstract class. This does not get instantiated, its attributes are inherited by row, column, and box objects.
 public class HolderObject {
   public int loc;
-  public CopyOnWriteArrayList<Square> contents = new CopyOnWriteArrayList<>();  // The squares in the HolderObject. This is a hard dependency, supply it in the constructor?
+  public CopyOnWriteArrayList<Square> contents = new CopyOnWriteArrayList<>();  // The squares in the HolderObject. This is a hard dependency, should supply it in the constructor.
   public int filled;
   public int empty = 9;
   public CopyOnWriteArrayList<Integer> openValues = new CopyOnWriteArrayList<>();
