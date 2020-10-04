@@ -1,0 +1,5 @@
+Always have the UML diagram prepared beforehand and look *very* carefully and thoroughly through
+code while coding it first time around. Further, test every function when it is made. It may take
+much longer, but it will prevent errors that take forever.
+
+Iterator does not check new elements added for copyOnWrite ArrayList, only those existing when first started.
