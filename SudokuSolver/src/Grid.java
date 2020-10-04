@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /*
- * Squares are like top-bottom, left-right. As precedent, I will use this traversal for
+ * Squares are like top-bottom, left-right. As precedent, use this traversal for
  * the data structures
 
  * index in squares
@@ -23,7 +23,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
  *
  *
- * Iterator design pattern for all my iterators??
+ * Iterator design pattern for all iterators
  *
  */
 
@@ -33,8 +33,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class Grid {
 
   /**
-   * This is bad because this is a hard dependency injection. Fix? No its fine because its not a
-   * separate class?
+   * Contains all elements of a standard Sudoku puzzle
    */
   public ArrayList<Box> boxes = new ArrayList<>();
   public ArrayList<Row> rows = new ArrayList<>();
@@ -77,13 +76,13 @@ public class Grid {
         return s;
       }
     }
-    // This should be handled with exceptions!
+    // No exceptions will be thrown here, but good practice to catch an input error
     return null;
   }
 
 
   /**
-   * Check to see this works!
+   * Initializes the boxes of the grid
    */
   public void createBoxes() {
     for (int loc = 1; loc < 10; loc++) {
@@ -196,54 +195,7 @@ public class Grid {
     }
   }
 
-    /*
-    Left to do:
-    -check if this works with basic grids
-    -have something that checks for errors
-    -do
-    tryValues()
-      findBestSquare()
-      tryValue()
-        check()
-     */
-
-
-
-
-
     // INITIALIZATIONS ABOVE
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // This was the culprit. Have to clone the grid, not just change the references
 
   /**
    * Takes the grid, and creates another with the same attributes
@@ -262,7 +214,7 @@ public class Grid {
   }
 
 
-  /**
+  /** Recursive template for solving the puzzle
   // Works only for very simply cases where its a 50/50 guess
   public Grid testValuesStandard(Grid grid) {
     // base case
@@ -286,9 +238,6 @@ public class Grid {
   }
    */
 
-
-
-
   /**
   // Useful only with the function below
   public void addOptions(Grid grid) {
@@ -297,7 +246,6 @@ public class Grid {
      }
   }
 
-  // can probably be taken out
   public Grid testValues(Grid grid) {
     // base case
     if (solvedGrid.checkSolved()) {
@@ -318,7 +266,6 @@ public class Grid {
   }
    */
 
-  // Fix the braces!!!!!
   public void testValuesStandard2() {
     // Start the method. gridOptions has the original grid
     Iterator it = this.gridOptions.iterator();
@@ -334,8 +281,6 @@ public class Grid {
         // Check to see if it is solved!
         if (checkSolved(g)) {
           // If it is solved..............
-          // No need for the commented line below!
-          //gridOptions.clear();
           // This essentially makes this class' attributes such that they are these.
           this.squares = g.squares;
           this.boxes = g.boxes;
@@ -353,7 +298,6 @@ public class Grid {
             Grid gg = cloneGrid(g);
             // Find the square with the location that I originally have
             Square ss = gg.getSquareLOC(s.getLoc());
-            // culprit! Removing possib won't do anything - I have to *set* possib
             ss.setValue(possib);
             parseGrid(gg);
             System.out.println(gridOptions.size());
@@ -389,14 +333,9 @@ public class Grid {
   }
 
 
-
-  ////// DELETE THIS AND MAKE THE ORIGINAL THE METHOD SIGNATURE FOR SOLVEGRID /////
   public void solveGrid() {
     testValuesStandard2();
   }
-
-
-
 
 
 
@@ -498,7 +437,6 @@ public class Grid {
     return sb.toString();
   }
 
-  // This always checks this grids' instead of the one in question!!!!!
   public boolean checkSolved(Grid grid) {
     if (works(grid)) {
       for (Square s : grid.squares) {
